@@ -1,0 +1,6 @@
+include: package:lint/strict.yaml
+
+linter:
+  rules:
+    # Follow flutter repo https://github.com/flutter/flutter/blob/master/analysis_options.yaml
+    sort_constructors_first: true
