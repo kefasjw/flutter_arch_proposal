@@ -23,7 +23,7 @@ class _AgentListScreenState extends ConsumerState<AgentListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Agent List"),
+        title: const Text('Agent List'),
       ),
       body: Consumer(
         builder: (context, ref, child) {
@@ -78,7 +78,7 @@ class _AgentListScreenState extends ConsumerState<AgentListScreen> {
         onPressed: () {
           ref.read(AgentListViewModel.provider.notifier).onAgentListRetried();
         },
-        child: const Text("Retry"),
+        child: const Text('Retry'),
       ),
     );
   }

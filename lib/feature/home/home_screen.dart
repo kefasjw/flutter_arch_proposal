@@ -6,8 +6,16 @@ import 'package:flutter_arch_proposal/feature/counter/counter_screen.dart';
 import 'package:go_router/go_router.dart';
 
 enum HomeTab {
-  agents(route: agentsRoute, icon: Icons.people, label: "Agents"),
-  counter(route: counterRoute, icon: Icons.calculate, label: "Counter");
+  agents(
+    route: AppRouter.agentsRoute,
+    icon: Icons.people,
+    label: 'Agents',
+  ),
+  counter(
+    route: AppRouter.counterRoute,
+    icon: Icons.calculate,
+    label: 'Counter',
+  );
 
   const HomeTab({
     required this.route,
@@ -36,8 +44,8 @@ class HomeScreen extends StatelessWidget {
       body: child,
       bottomNavigationBar: NavigationBar(
         selectedIndex: HomeTab.values.indexWhere((tab) {
-          // Not sure why name always returns null
-          return GoRouterState.of(context).location.contains(tab.route);
+          return GoRouterState.of(context).subloc ==
+              context.namedLocation(tab.route);
         }),
         onDestinationSelected: (value) {
           context.goNamed(HomeTab.values[value].route);

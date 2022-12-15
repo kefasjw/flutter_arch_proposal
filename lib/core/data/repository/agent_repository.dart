@@ -16,11 +16,11 @@ class AgentRepository {
 }
 
 final agentData = [
-  Agent(id: "465BA13251", name: "Ahmad Fikri", status: AgentStatus.active),
-  Agent(id: "465BA15022", name: "Saifunnuha ST", status: AgentStatus.inactive),
-  Agent(id: "465BA13303", name: "Sari", status: AgentStatus.retired),
-  Agent(id: "465BA13254", name: "Ahmad Fikri", status: AgentStatus.active),
-  Agent(id: "465BA15025", name: "Saifunnuha ST", status: AgentStatus.inactive),
-  Agent(id: "465BA13306", name: "Sari", status: AgentStatus.retired),
-  Agent(id: "465BA13257", name: "Ahmad Fikri", status: AgentStatus.active),
+  Agent(id: '465BA13251', name: 'Ahmad Fikri', status: AgentStatus.active),
+  Agent(id: '465BA15022', name: 'Saifunnuha ST', status: AgentStatus.inactive),
+  Agent(id: '465BA13303', name: 'Sari', status: AgentStatus.retired),
+  Agent(id: '465BA13254', name: 'Ahmad Fikri', status: AgentStatus.active),
+  Agent(id: '465BA15025', name: 'Saifunnuha ST', status: AgentStatus.inactive),
+  Agent(id: '465BA13306', name: 'Sari', status: AgentStatus.retired),
+  Agent(id: '465BA13257', name: 'Ahmad Fikri', status: AgentStatus.active),
 ];
