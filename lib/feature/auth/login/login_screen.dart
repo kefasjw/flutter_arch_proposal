@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_arch_proposal/app/navigation/router.dart';
+import 'package:flutter_arch_proposal/core/ui/loading_overlay.dart';
 import 'package:flutter_arch_proposal/feature/auth/login/login_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -12,12 +13,23 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
+  late final _usernameController = TextEditingController();
+
+  late final _passwordController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ref.read(LoginViewModel.provider.notifier).onScreenLoaded();
     });
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -28,29 +40,133 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         if (next) context.goNamed(AppRouter.agentsRoute);
       },
     );
-    return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
-      body: Center(
-        child: Consumer(
+    final isLoading = ref.watch(
+      LoginViewModel.provider.select((value) => value.isLoading),
+    );
+    return LoadingOverlay(
+      isLoading: isLoading,
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Login')),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _usernameField(),
+                const SizedBox(height: 24.0),
+                _passwordField(),
+                const SizedBox(height: 8.0),
+                _checkboxRow(),
+                const SizedBox(height: 8.0),
+                _loginButton(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _usernameField() {
+    return Consumer(
+      builder: (context, ref, child) {
+        ref.listen(
+          LoginViewModel.provider.select((state) => state.username),
+          (previous, next) {
+            if (next != _usernameController.text) {
+              _usernameController.text = next;
+            }
+          },
+        );
+        return TextField(
+          controller: _usernameController,
+          textInputAction: TextInputAction.next,
+          decoration: InputDecoration(
+            labelText: 'Username',
+            border: const OutlineInputBorder(),
+            errorText: ref.watch(
+              LoginViewModel.provider.select((state) => state.usernameError),
+            ),
+          ),
+          onChanged:
+              ref.read(LoginViewModel.provider.notifier).onUsernameChanged,
+        );
+      },
+    );
+  }
+
+  Widget _passwordField() {
+    return Consumer(
+      builder: (context, ref, child) {
+        ref.listen(
+          LoginViewModel.provider.select((state) => state.password),
+          (previous, next) {
+            if (next != _passwordController.text) {
+              _passwordController.text = next;
+            }
+          },
+        );
+        return TextField(
+          controller: _passwordController,
+          obscureText: true,
+          onSubmitted: (_) {
+            ref.read(LoginViewModel.provider.notifier).onLoginButtonPressed();
+          },
+          decoration: InputDecoration(
+            labelText: 'Password',
+            border: const OutlineInputBorder(),
+            errorText: ref.watch(
+              LoginViewModel.provider.select((state) => state.passwordError),
+            ),
+          ),
+          onChanged:
+              ref.read(LoginViewModel.provider.notifier).onPasswordChanged,
+        );
+      },
+    );
+  }
+
+  Widget _checkboxRow() {
+    return Row(
+      children: [
+        Consumer(
           builder: (context, ref, child) {
-            final isLoading = ref.watch(
-              LoginViewModel.provider.select((value) => value.isLoading),
+            return Checkbox(
+              value: ref.watch(
+                LoginViewModel.provider
+                    .select((state) => state.shouldSaveUsername),
+              ),
+              onChanged: (_) {
+                ref
+                    .read(LoginViewModel.provider.notifier)
+                    .onShouldSaveUsernameToggled();
+              },
             );
-            if (isLoading) {
-              return const CircularProgressIndicator();
-            } else {
-              return ElevatedButton(
-                onPressed: () {
+          },
+        ),
+        const Text('Remember username'),
+      ],
+    );
+  }
+
+  Widget _loginButton() {
+    return Consumer(
+      builder: (context, ref, child) {
+        final isEnabled = ref.watch(
+          LoginViewModel.provider.select((state) => state.isLoginButtonEnabled),
+        );
+        return ElevatedButton(
+          onPressed: isEnabled
+              ? () {
                   ref
                       .read(LoginViewModel.provider.notifier)
                       .onLoginButtonPressed();
-                },
-                child: const Text('Login'),
-              );
-            }
-          },
-        ),
-      ),
+                }
+              : null,
+          child: const Text('Login'),
+        );
+      },
     );
   }
 }
