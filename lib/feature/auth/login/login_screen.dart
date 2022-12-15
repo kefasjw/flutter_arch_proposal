@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_arch_proposal/core/navigation/router.dart';
+import 'package:flutter_arch_proposal/app/navigation/router.dart';
 import 'package:flutter_arch_proposal/feature/auth/login/login_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -34,7 +34,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         child: Consumer(
           builder: (context, ref, child) {
             final isLoading = ref.watch(
-                LoginViewModel.provider.select((value) => value.isLoading),);
+              LoginViewModel.provider.select((value) => value.isLoading),
+            );
             if (isLoading) {
               return const CircularProgressIndicator();
             } else {

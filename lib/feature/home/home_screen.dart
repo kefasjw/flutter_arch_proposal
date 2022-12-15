@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_arch_proposal/core/navigation/router.dart';
+import 'package:flutter_arch_proposal/app/navigation/router.dart';
 import 'package:flutter_arch_proposal/core/ui/lazy_indexed_stack.dart';
 import 'package:flutter_arch_proposal/feature/agent/list/agent_list_screen.dart';
 import 'package:flutter_arch_proposal/feature/counter/counter_screen.dart';
