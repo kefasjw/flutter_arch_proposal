@@ -3,6 +3,7 @@ import 'package:flutter_arch_proposal/app/navigation/router.dart';
 import 'package:flutter_arch_proposal/core/ui/lazy_indexed_stack.dart';
 import 'package:flutter_arch_proposal/feature/agent/list/agent_list_screen.dart';
 import 'package:flutter_arch_proposal/feature/counter/counter_screen.dart';
+import 'package:flutter_arch_proposal/feature/settings/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 
 enum HomeTab {
@@ -15,6 +16,11 @@ enum HomeTab {
     route: AppRouter.counterRoute,
     icon: Icons.calculate,
     label: 'Counter',
+  ),
+  settings(
+    route: AppRouter.settingsRoute,
+    icon: Icons.settings,
+    label: 'Settings',
   );
 
   const HomeTab({
@@ -33,15 +39,15 @@ enum HomeTab {
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
-    required this.child,
+    required this.tab,
   });
 
-  final Widget child;
+  final HomeTab tab;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: child,
+      body: _HomeChildScreen(tab: tab),
       bottomNavigationBar: NavigationBar(
         selectedIndex: HomeTab.values.indexWhere((tab) {
           return GoRouterState.of(context).subloc ==
@@ -63,11 +69,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class HomeChildScreen extends StatelessWidget {
-  const HomeChildScreen({
-    super.key,
-    required this.tab,
-  });
+class _HomeChildScreen extends StatelessWidget {
+  const _HomeChildScreen({required this.tab});
 
   final HomeTab tab;
 
@@ -78,6 +81,7 @@ class HomeChildScreen extends StatelessWidget {
       children: const [
         AgentListScreen(),
         CounterScreen(),
+        SettingsScreen(),
       ],
     );
   }

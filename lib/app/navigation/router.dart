@@ -18,6 +18,7 @@ class AppRouter {
   static const loginRoute = 'login';
   static const agentsRoute = 'agents';
   static const counterRoute = 'counter';
+  static const settingsRoute = 'settings';
 
   final AuthRepository _authRepository;
 
@@ -38,7 +39,7 @@ class AppRouter {
         path: '/$agentsRoute',
         pageBuilder: (context, state) {
           return _homePage(
-            const HomeScreen(child: HomeChildScreen(tab: HomeTab.agents)),
+            const HomeScreen(tab: HomeTab.agents),
           );
         },
       ),
@@ -47,15 +48,22 @@ class AppRouter {
         path: '/$counterRoute',
         pageBuilder: (context, state) {
           return _homePage(
-            const HomeScreen(child: HomeChildScreen(tab: HomeTab.counter)),
+            const HomeScreen(tab: HomeTab.counter),
           );
+        },
+      ),
+      GoRoute(
+        name: settingsRoute,
+        path: '/$settingsRoute',
+        pageBuilder: (context, state) {
+          return _homePage(const HomeScreen(tab: HomeTab.settings));
         },
       ),
       GoRoute(
         name: loginRoute,
         path: '/$loginRoute',
         builder: (context, state) => const LoginScreen(),
-      )
+      ),
     ],
   );
 

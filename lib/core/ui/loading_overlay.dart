@@ -25,7 +25,9 @@ class _LoadingOverlayState extends State<LoadingOverlay> {
       return Stack(
         children: [
           child,
-          const ModalBarrier(color: Colors.black54,),
+          const ModalBarrier(
+            color: Colors.black54,
+          ),
           Dialog(
             child: Padding(
               padding: const EdgeInsets.all(24.0),
