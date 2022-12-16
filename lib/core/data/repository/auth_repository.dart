@@ -1,26 +1,32 @@
 import 'dart:async';
 
+import 'package:flutter_arch_proposal/core/secure_storage/app_secure_storage_data_source.dart';
 import 'package:flutter_arch_proposal/core/shared_preferences/app_preferences_data_source.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AuthRepository {
-  AuthRepository(this._appPreferencesDataSource);
+  AuthRepository(
+    this._appPreferencesDataSource,
+    this._appSecureStorageDataSource,
+  );
 
   static final provider = Provider(
-    (ref) => AuthRepository(ref.watch(AppPreferencesDataSource.provider)),
+    (ref) => AuthRepository(
+      ref.watch(AppPreferencesDataSource.provider),
+      ref.watch(AppSecureStorageDataSource.provider),
+    ),
   );
 
   final AppPreferencesDataSource _appPreferencesDataSource;
 
-  final _isLoggedInStream = StreamController<bool>();
+  final AppSecureStorageDataSource _appSecureStorageDataSource;
 
-  late Stream<bool> isLoggedInStream =
-      _isLoggedInStream.stream.asBroadcastStream();
-
-  var _isLoggedInCache = false;
+  late Stream<bool> isLoggedInStream = _appSecureStorageDataSource
+      .getTokenStream()
+      .map((event) => event.isNotEmpty);
 
   Future<bool> isLoggedIn() async {
-    return _isLoggedInCache;
+    return (await _appSecureStorageDataSource.getToken()).isNotEmpty;
   }
 
   Future<String> getLastUsername() async {
@@ -38,16 +44,11 @@ class AuthRepository {
     } else {
       await _appPreferencesDataSource.setUsername('');
     }
-    _updateLoginState(true);
+    await _appSecureStorageDataSource.setToken('dummy token');
   }
 
   Future<void> logout() async {
     await Future.delayed(const Duration(seconds: 2));
-    _updateLoginState(false);
-  }
-
-  void _updateLoginState(bool isLoggedIn) {
-    _isLoggedInStream.add(isLoggedIn);
-    _isLoggedInCache = isLoggedIn;
+    await _appSecureStorageDataSource.setToken('');
   }
 }
