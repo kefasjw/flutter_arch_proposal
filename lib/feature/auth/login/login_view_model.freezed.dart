@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginScreenUiState {
-  bool get isLoading => throw _privateConstructorUsedError;
   bool get isLoggedIn => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String? get usernameError => throw _privateConstructorUsedError;
@@ -37,8 +36,7 @@ abstract class $LoginScreenUiStateCopyWith<$Res> {
       _$LoginScreenUiStateCopyWithImpl<$Res, LoginScreenUiState>;
   @useResult
   $Res call(
-      {bool isLoading,
-      bool isLoggedIn,
+      {bool isLoggedIn,
       String username,
       String? usernameError,
       String password,
@@ -60,7 +58,6 @@ class _$LoginScreenUiStateCopyWithImpl<$Res, $Val extends LoginScreenUiState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
     Object? isLoggedIn = null,
     Object? username = null,
     Object? usernameError = freezed,
@@ -70,10 +67,6 @@ class _$LoginScreenUiStateCopyWithImpl<$Res, $Val extends LoginScreenUiState>
     Object? isLoginButtonEnabled = null,
   }) {
     return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       isLoggedIn: null == isLoggedIn
           ? _value.isLoggedIn
           : isLoggedIn // ignore: cast_nullable_to_non_nullable
@@ -115,8 +108,7 @@ abstract class _$$_LoginScreenUiStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading,
-      bool isLoggedIn,
+      {bool isLoggedIn,
       String username,
       String? usernameError,
       String password,
@@ -136,7 +128,6 @@ class __$$_LoginScreenUiStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
     Object? isLoggedIn = null,
     Object? username = null,
     Object? usernameError = freezed,
@@ -146,10 +137,6 @@ class __$$_LoginScreenUiStateCopyWithImpl<$Res>
     Object? isLoginButtonEnabled = null,
   }) {
     return _then(_$_LoginScreenUiState(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       isLoggedIn: null == isLoggedIn
           ? _value.isLoggedIn
           : isLoggedIn // ignore: cast_nullable_to_non_nullable
@@ -186,8 +173,7 @@ class __$$_LoginScreenUiStateCopyWithImpl<$Res>
 
 class _$_LoginScreenUiState implements _LoginScreenUiState {
   const _$_LoginScreenUiState(
-      {this.isLoading = false,
-      this.isLoggedIn = false,
+      {this.isLoggedIn = false,
       this.username = '',
       this.usernameError,
       this.password = '',
@@ -195,9 +181,6 @@ class _$_LoginScreenUiState implements _LoginScreenUiState {
       this.shouldSaveUsername = false,
       this.isLoginButtonEnabled = false});
 
-  @override
-  @JsonKey()
-  final bool isLoading;
   @override
   @JsonKey()
   final bool isLoggedIn;
@@ -220,7 +203,7 @@ class _$_LoginScreenUiState implements _LoginScreenUiState {
 
   @override
   String toString() {
-    return 'LoginScreenUiState(isLoading: $isLoading, isLoggedIn: $isLoggedIn, username: $username, usernameError: $usernameError, password: $password, passwordError: $passwordError, shouldSaveUsername: $shouldSaveUsername, isLoginButtonEnabled: $isLoginButtonEnabled)';
+    return 'LoginScreenUiState(isLoggedIn: $isLoggedIn, username: $username, usernameError: $usernameError, password: $password, passwordError: $passwordError, shouldSaveUsername: $shouldSaveUsername, isLoginButtonEnabled: $isLoginButtonEnabled)';
   }
 
   @override
@@ -228,8 +211,6 @@ class _$_LoginScreenUiState implements _LoginScreenUiState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginScreenUiState &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
             (identical(other.isLoggedIn, isLoggedIn) ||
                 other.isLoggedIn == isLoggedIn) &&
             (identical(other.username, username) ||
@@ -249,7 +230,6 @@ class _$_LoginScreenUiState implements _LoginScreenUiState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      isLoading,
       isLoggedIn,
       username,
       usernameError,
@@ -268,8 +248,7 @@ class _$_LoginScreenUiState implements _LoginScreenUiState {
 
 abstract class _LoginScreenUiState implements LoginScreenUiState {
   const factory _LoginScreenUiState(
-      {final bool isLoading,
-      final bool isLoggedIn,
+      {final bool isLoggedIn,
       final String username,
       final String? usernameError,
       final String password,
@@ -277,8 +256,6 @@ abstract class _LoginScreenUiState implements LoginScreenUiState {
       final bool shouldSaveUsername,
       final bool isLoginButtonEnabled}) = _$_LoginScreenUiState;
 
-  @override
-  bool get isLoading;
   @override
   bool get isLoggedIn;
   @override

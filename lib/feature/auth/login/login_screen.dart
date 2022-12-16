@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_arch_proposal/app/navigation/router.dart';
-import 'package:flutter_arch_proposal/core/ui/loading_overlay.dart';
 import 'package:flutter_arch_proposal/feature/auth/login/login_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -40,28 +39,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         if (next) context.goNamed(AppRouter.agentsRoute);
       },
     );
-    final isLoading = ref.watch(
-      LoginViewModel.provider.select((value) => value.isLoading),
-    );
-    return LoadingOverlay(
-      isLoading: isLoading,
-      child: Scaffold(
-        appBar: AppBar(title: const Text('Login')),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                _usernameField(),
-                const SizedBox(height: 24.0),
-                _passwordField(),
-                const SizedBox(height: 8.0),
-                _checkboxRow(),
-                const SizedBox(height: 8.0),
-                _loginButton(),
-              ],
-            ),
+    return Scaffold(
+      appBar: AppBar(title: const Text('Login')),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _usernameField(),
+              const SizedBox(height: 24.0),
+              _passwordField(),
+              const SizedBox(height: 8.0),
+              _checkboxRow(),
+              const SizedBox(height: 8.0),
+              _loginButton(),
+            ],
           ),
         ),
       ),

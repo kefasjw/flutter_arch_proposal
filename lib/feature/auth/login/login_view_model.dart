@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_arch_proposal/core/data/repository/auth_repository.dart';
+import 'package:flutter_arch_proposal/feature/common/common_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -8,21 +9,29 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'login_view_model.freezed.dart';
 
 class LoginViewModel extends StateNotifier<LoginScreenUiState> {
-  LoginViewModel(this._authRepository) : super(const LoginScreenUiState());
+  LoginViewModel(
+    this._authRepository,
+    this._commonViewModel,
+  ) : super(const LoginScreenUiState());
+
+  static final provider =
+      StateNotifierProvider.autoDispose<LoginViewModel, LoginScreenUiState>(
+          (ref) {
+    return LoginViewModel(
+      ref.watch(AuthRepository.provider),
+      ref.watch(CommonViewModel.provider.notifier),
+    );
+  });
+
+  final AuthRepository _authRepository;
+
+  final CommonViewModel _commonViewModel;
 
   StreamSubscription? _isLoggedInSubscription;
 
   Timer? _usernameDebounce;
 
   Timer? _passwordDebounce;
-
-  static final provider =
-      StateNotifierProvider.autoDispose<LoginViewModel, LoginScreenUiState>(
-          (ref) {
-    return LoginViewModel(ref.watch(AuthRepository.provider));
-  });
-
-  final AuthRepository _authRepository;
 
   void onScreenLoaded() {
     _isLoggedInSubscription?.cancel();
@@ -104,14 +113,14 @@ class LoginViewModel extends StateNotifier<LoginScreenUiState> {
 
   Future<void> onLoginButtonPressed() async {
     if (!_checkLoginButtonEnabled()) return;
-    state = state.copyWith(isLoading: true);
+    _commonViewModel.showLoading(isLoading: true);
     await _authRepository.login(
       username: state.username,
       password: state.password,
       shouldSaveUsername: state.shouldSaveUsername,
     );
     if (!mounted) return;
-    state = state.copyWith(isLoading: false);
+    _commonViewModel.showLoading(isLoading: false);
   }
 
   @override
@@ -126,7 +135,6 @@ class LoginViewModel extends StateNotifier<LoginScreenUiState> {
 @freezed
 class LoginScreenUiState with _$LoginScreenUiState {
   const factory LoginScreenUiState({
-    @Default(false) bool isLoading,
     @Default(false) bool isLoggedIn,
     @Default('') String username,
     String? usernameError,
