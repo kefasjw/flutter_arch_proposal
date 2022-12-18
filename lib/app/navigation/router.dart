@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:auth/auth.dart';
 import 'package:auth_core/auth_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_arch_proposal/app/home/home_screen.dart';
+import 'package:flutter_arch_proposal/app/top_level/top_level_screen.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
 import 'package:shared_dependency/go_router.dart';
 
@@ -38,25 +38,21 @@ class AppRouter {
         name: agentsRoute,
         path: '/$agentsRoute',
         pageBuilder: (context, state) {
-          return _homePage(
-            const HomeScreen(tab: HomeTab.agents),
-          );
+          return _topLevel(TopLevelTab.agents);
         },
       ),
       GoRoute(
         name: counterRoute,
         path: '/$counterRoute',
         pageBuilder: (context, state) {
-          return _homePage(
-            const HomeScreen(tab: HomeTab.counter),
-          );
+          return _topLevel(TopLevelTab.counter);
         },
       ),
       GoRoute(
         name: settingsRoute,
         path: '/$settingsRoute',
         pageBuilder: (context, state) {
-          return _homePage(const HomeScreen(tab: HomeTab.settings));
+          return _topLevel(TopLevelTab.settings);
         },
       ),
       GoRoute(
@@ -69,8 +65,8 @@ class AppRouter {
     ],
   );
 
-  Page<void> _homePage(Widget child) {
-    return MaterialPage(key: _homePageKey, child: child);
+  Page<void> _topLevel(TopLevelTab tab) {
+    return MaterialPage(key: _homePageKey, child: TopLevelScreen(tab: tab));
   }
 }
 

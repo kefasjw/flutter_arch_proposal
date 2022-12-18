@@ -6,7 +6,7 @@ import 'package:flutter_arch_proposal/app/navigation/router.dart';
 import 'package:settings/settings.dart';
 import 'package:shared_dependency/go_router.dart';
 
-enum HomeTab {
+enum TopLevelTab {
   agents(
     route: AppRouter.agentsRoute,
     icon: Icons.people,
@@ -23,7 +23,7 @@ enum HomeTab {
     label: 'Settings',
   );
 
-  const HomeTab({
+  const TopLevelTab({
     required this.route,
     required this.icon,
     required this.label,
@@ -36,28 +36,28 @@ enum HomeTab {
   final String label;
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({
+class TopLevelScreen extends StatelessWidget {
+  const TopLevelScreen({
     super.key,
     required this.tab,
   });
 
-  final HomeTab tab;
+  final TopLevelTab tab;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _HomeChildScreen(tab: tab),
+      body: _TopLevelChildScreen(tab: tab),
       bottomNavigationBar: NavigationBar(
-        selectedIndex: HomeTab.values.indexWhere((tab) {
+        selectedIndex: TopLevelTab.values.indexWhere((tab) {
           return GoRouterState.of(context).subloc ==
               context.namedLocation(tab.route);
         }),
         onDestinationSelected: (value) {
-          context.goNamed(HomeTab.values[value].route);
+          context.goNamed(TopLevelTab.values[value].route);
         },
         destinations: [
-          ...HomeTab.values.map((tab) {
+          ...TopLevelTab.values.map((tab) {
             return NavigationDestination(
               icon: Icon(tab.icon),
               label: tab.label,
@@ -69,15 +69,15 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _HomeChildScreen extends StatelessWidget {
-  const _HomeChildScreen({required this.tab});
+class _TopLevelChildScreen extends StatelessWidget {
+  const _TopLevelChildScreen({required this.tab});
 
-  final HomeTab tab;
+  final TopLevelTab tab;
 
   @override
   Widget build(BuildContext context) {
     return LazyIndexedStack(
-      index: HomeTab.values.indexWhere((tab) => tab == this.tab),
+      index: TopLevelTab.values.indexWhere((tab) => tab == this.tab),
       children: const [
         AgentListScreen(),
         CounterScreen(),
