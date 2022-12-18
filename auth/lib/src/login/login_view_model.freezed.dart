@@ -18,9 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoginScreenUiState {
   bool get isLoggedIn => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
-  String? get usernameError => throw _privateConstructorUsedError;
+  UiText get usernameError => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
-  String? get passwordError => throw _privateConstructorUsedError;
+  UiText get passwordError => throw _privateConstructorUsedError;
   bool get shouldSaveUsername => throw _privateConstructorUsedError;
   bool get isLoginButtonEnabled => throw _privateConstructorUsedError;
 
@@ -38,11 +38,14 @@ abstract class $LoginScreenUiStateCopyWith<$Res> {
   $Res call(
       {bool isLoggedIn,
       String username,
-      String? usernameError,
+      UiText usernameError,
       String password,
-      String? passwordError,
+      UiText passwordError,
       bool shouldSaveUsername,
       bool isLoginButtonEnabled});
+
+  $UiTextCopyWith<$Res> get usernameError;
+  $UiTextCopyWith<$Res> get passwordError;
 }
 
 /// @nodoc
@@ -60,9 +63,9 @@ class _$LoginScreenUiStateCopyWithImpl<$Res, $Val extends LoginScreenUiState>
   $Res call({
     Object? isLoggedIn = null,
     Object? username = null,
-    Object? usernameError = freezed,
+    Object? usernameError = null,
     Object? password = null,
-    Object? passwordError = freezed,
+    Object? passwordError = null,
     Object? shouldSaveUsername = null,
     Object? isLoginButtonEnabled = null,
   }) {
@@ -75,18 +78,18 @@ class _$LoginScreenUiStateCopyWithImpl<$Res, $Val extends LoginScreenUiState>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      usernameError: freezed == usernameError
+      usernameError: null == usernameError
           ? _value.usernameError
           : usernameError // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UiText,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      passwordError: freezed == passwordError
+      passwordError: null == passwordError
           ? _value.passwordError
           : passwordError // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UiText,
       shouldSaveUsername: null == shouldSaveUsername
           ? _value.shouldSaveUsername
           : shouldSaveUsername // ignore: cast_nullable_to_non_nullable
@@ -96,6 +99,22 @@ class _$LoginScreenUiStateCopyWithImpl<$Res, $Val extends LoginScreenUiState>
           : isLoginButtonEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UiTextCopyWith<$Res> get usernameError {
+    return $UiTextCopyWith<$Res>(_value.usernameError, (value) {
+      return _then(_value.copyWith(usernameError: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UiTextCopyWith<$Res> get passwordError {
+    return $UiTextCopyWith<$Res>(_value.passwordError, (value) {
+      return _then(_value.copyWith(passwordError: value) as $Val);
+    });
   }
 }
 
@@ -110,11 +129,16 @@ abstract class _$$_LoginScreenUiStateCopyWith<$Res>
   $Res call(
       {bool isLoggedIn,
       String username,
-      String? usernameError,
+      UiText usernameError,
       String password,
-      String? passwordError,
+      UiText passwordError,
       bool shouldSaveUsername,
       bool isLoginButtonEnabled});
+
+  @override
+  $UiTextCopyWith<$Res> get usernameError;
+  @override
+  $UiTextCopyWith<$Res> get passwordError;
 }
 
 /// @nodoc
@@ -130,9 +154,9 @@ class __$$_LoginScreenUiStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoggedIn = null,
     Object? username = null,
-    Object? usernameError = freezed,
+    Object? usernameError = null,
     Object? password = null,
-    Object? passwordError = freezed,
+    Object? passwordError = null,
     Object? shouldSaveUsername = null,
     Object? isLoginButtonEnabled = null,
   }) {
@@ -145,18 +169,18 @@ class __$$_LoginScreenUiStateCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      usernameError: freezed == usernameError
+      usernameError: null == usernameError
           ? _value.usernameError
           : usernameError // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UiText,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      passwordError: freezed == passwordError
+      passwordError: null == passwordError
           ? _value.passwordError
           : passwordError // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UiText,
       shouldSaveUsername: null == shouldSaveUsername
           ? _value.shouldSaveUsername
           : shouldSaveUsername // ignore: cast_nullable_to_non_nullable
@@ -175,9 +199,9 @@ class _$_LoginScreenUiState implements _LoginScreenUiState {
   const _$_LoginScreenUiState(
       {this.isLoggedIn = false,
       this.username = '',
-      this.usernameError,
+      this.usernameError = UiText.empty,
       this.password = '',
-      this.passwordError,
+      this.passwordError = UiText.empty,
       this.shouldSaveUsername = false,
       this.isLoginButtonEnabled = false});
 
@@ -188,12 +212,14 @@ class _$_LoginScreenUiState implements _LoginScreenUiState {
   @JsonKey()
   final String username;
   @override
-  final String? usernameError;
+  @JsonKey()
+  final UiText usernameError;
   @override
   @JsonKey()
   final String password;
   @override
-  final String? passwordError;
+  @JsonKey()
+  final UiText passwordError;
   @override
   @JsonKey()
   final bool shouldSaveUsername;
@@ -250,9 +276,9 @@ abstract class _LoginScreenUiState implements LoginScreenUiState {
   const factory _LoginScreenUiState(
       {final bool isLoggedIn,
       final String username,
-      final String? usernameError,
+      final UiText usernameError,
       final String password,
-      final String? passwordError,
+      final UiText passwordError,
       final bool shouldSaveUsername,
       final bool isLoginButtonEnabled}) = _$_LoginScreenUiState;
 
@@ -261,11 +287,11 @@ abstract class _LoginScreenUiState implements LoginScreenUiState {
   @override
   String get username;
   @override
-  String? get usernameError;
+  UiText get usernameError;
   @override
   String get password;
   @override
-  String? get passwordError;
+  UiText get passwordError;
   @override
   bool get shouldSaveUsername;
   @override

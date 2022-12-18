@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:core/src/localizations/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_dependency/freezed_annotation.dart';
@@ -10,6 +11,8 @@ class UiText with _$UiText {
 
   const factory UiText.localized(LocalizationsBuilder builder) =
       UiTextLocalizations;
+
+  static const empty = UiText.string('');
 }
 
 typedef LocalizationsBuilder = String Function(AppLocalizations localizations);
@@ -22,5 +25,15 @@ extension BuildContextLocalizations on BuildContext {
       string: (value) => value,
       localized: (builder) => builder(localizations),
     );
+  }
+}
+
+extension NullString on String {
+  String? nullIfEmpty() {
+    if (isEmpty) {
+      return null;
+    } else {
+      return this;
+    }
   }
 }

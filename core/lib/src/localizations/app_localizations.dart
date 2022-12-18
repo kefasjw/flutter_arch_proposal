@@ -91,11 +91,77 @@ abstract class AppLocalizations {
     Locale('en')
   ];
 
-  /// The conventional newborn programmer greeting
+  /// No description provided for @agents.
   ///
   /// In en, this message translates to:
-  /// **'Hello World!'**
-  String get helloWorld;
+  /// **'Agents'**
+  String get agents;
+
+  /// No description provided for @counter.
+  ///
+  /// In en, this message translates to:
+  /// **'Counter'**
+  String get counter;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @username.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get username;
+
+  /// No description provided for @rememberUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember username?'**
+  String get rememberUsername;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @usernameMinCharacters.
+  ///
+  /// In en, this message translates to:
+  /// **'Username min 3 characters'**
+  String get usernameMinCharacters;
+
+  /// No description provided for @passwordMustNotEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must not be empty'**
+  String get passwordMustNotEmpty;
+
+  /// No description provided for @pushedCounterInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve pushed the button this many times:'**
+  String get pushedCounterInformation;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

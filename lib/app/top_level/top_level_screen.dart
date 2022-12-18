@@ -10,30 +10,35 @@ enum TopLevelTab {
   agents(
     route: AppRouter.agentsRoute,
     icon: Icons.people,
-    label: 'Agents',
   ),
   counter(
     route: AppRouter.counterRoute,
     icon: Icons.calculate,
-    label: 'Counter',
   ),
   settings(
     route: AppRouter.settingsRoute,
     icon: Icons.settings,
-    label: 'Settings',
   );
 
   const TopLevelTab({
     required this.route,
     required this.icon,
-    required this.label,
   });
 
   final String route;
 
   final IconData icon;
 
-  final String label;
+  UiText get label {
+    switch (this) {
+      case TopLevelTab.agents:
+        return UiText.localized((localizations) => localizations.agents);
+      case TopLevelTab.counter:
+        return UiText.localized((localizations) => localizations.counter);
+      case TopLevelTab.settings:
+        return UiText.localized((localizations) => localizations.settings);
+    }
+  }
 }
 
 class TopLevelScreen extends StatelessWidget {
@@ -60,7 +65,7 @@ class TopLevelScreen extends StatelessWidget {
           ...TopLevelTab.values.map((tab) {
             return NavigationDestination(
               icon: Icon(tab.icon),
-              label: tab.label,
+              label: context.getString(tab.label),
             );
           }),
         ],

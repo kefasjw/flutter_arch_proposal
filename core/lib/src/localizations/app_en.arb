@@ -1,6 +1,14 @@
 {
-  "helloWorld": "Hello World!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "agents": "Agents",
+  "counter": "Counter",
+  "settings": "Settings",
+  "login": "Login",
+  "logout": "Logout",
+  "username": "Username",
+  "rememberUsername": "Remember username?",
+  "password": "Password",
+  "usernameMinCharacters": "Username min 3 characters",
+  "passwordMustNotEmpty": "Password must not be empty",
+  "pushedCounterInformation": "You've pushed the button this many times:",
+  "retry": "Retry"
 }

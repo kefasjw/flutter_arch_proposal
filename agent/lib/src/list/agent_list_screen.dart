@@ -1,5 +1,6 @@
 import 'package:agent/src/list/agent_list_view_model.dart';
 import 'package:agent_core/agent_core.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
 
@@ -22,9 +23,7 @@ class _AgentListScreenState extends ConsumerState<AgentListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Agent List'),
-      ),
+      appBar: AppBar(title: Text(context.localizations.agents)),
       body: Consumer(
         builder: (context, ref, child) {
           final agentListUiState = ref.watch(
@@ -78,7 +77,7 @@ class _AgentListScreenState extends ConsumerState<AgentListScreen> {
         onPressed: () {
           ref.read(AgentListViewModel.provider.notifier).onAgentListRetried();
         },
-        child: const Text('Retry'),
+        child: Text(context.localizations.retry),
       ),
     );
   }

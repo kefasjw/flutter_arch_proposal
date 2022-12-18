@@ -66,14 +66,16 @@ class LoginViewModel extends StateNotifier<LoginScreenUiState> {
   }
 
   bool _validateUsername({required bool showError}) {
-    final String? error;
+    final UiText error;
     if (state.username.length < 3) {
-      error = 'Min 3 characters';
+      error = UiText.localized(
+        (localizations) => localizations.usernameMinCharacters,
+      );
     } else {
-      error = null;
+      error = UiText.empty;
     }
     if (showError) state = state.copyWith(usernameError: error);
-    return error == null;
+    return error == UiText.empty;
   }
 
   void onPasswordChanged(String password) {
@@ -89,14 +91,16 @@ class LoginViewModel extends StateNotifier<LoginScreenUiState> {
   }
 
   bool _validatePassword({required bool showError}) {
-    final String? error;
+    final UiText error;
     if (state.password.isEmpty) {
-      error = 'Must not be empty';
+      error = UiText.localized(
+        (localizations) => localizations.passwordMustNotEmpty,
+      );
     } else {
-      error = null;
+      error = UiText.empty;
     }
     if (showError) state = state.copyWith(passwordError: error);
-    return error == null;
+    return error == UiText.empty;
   }
 
   bool _checkLoginButtonEnabled() {
@@ -136,9 +140,9 @@ class LoginScreenUiState with _$LoginScreenUiState {
   const factory LoginScreenUiState({
     @Default(false) bool isLoggedIn,
     @Default('') String username,
-    String? usernameError,
+    @Default(UiText.empty) UiText usernameError,
     @Default('') String password,
-    String? passwordError,
+    @Default(UiText.empty) UiText passwordError,
     @Default(false) bool shouldSaveUsername,
     @Default(false) bool isLoginButtonEnabled,
   }) = _LoginScreenUiState;

@@ -13,6 +13,8 @@ class App extends ConsumerWidget {
         return CommonScreen(child: child ?? const SizedBox.shrink());
       },
       routerConfig: ref.watch(AppRouter.provider).router,
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: const [AppLocalizations.delegate],
       theme: ThemeData.from(
         colorScheme: const ColorScheme.light(),
         useMaterial3: true,

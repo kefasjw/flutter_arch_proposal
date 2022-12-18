@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
 class CounterScreen extends StatefulWidget {
@@ -19,16 +20,12 @@ class _CounterScreenState extends State<CounterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Counter'),
-      ),
+      appBar: AppBar(title: Text(context.localizations.counter)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            Text(context.localizations.pushedCounterInformation),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,

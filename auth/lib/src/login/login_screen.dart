@@ -1,4 +1,5 @@
 import 'package:auth/src/login/login_view_model.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
 import 'package:shared_dependency/go_router.dart';
@@ -80,10 +81,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           controller: _usernameController,
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
-            labelText: 'Username',
+            labelText: context.localizations.username,
             border: const OutlineInputBorder(),
             errorText: ref.watch(
-              LoginViewModel.provider.select((state) => state.usernameError),
+              LoginViewModel.provider
+                  .select((state) => context.getString(state.usernameError).nullIfEmpty()),
             ),
           ),
           onChanged:
@@ -111,10 +113,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             ref.read(LoginViewModel.provider.notifier).onLoginButtonPressed();
           },
           decoration: InputDecoration(
-            labelText: 'Password',
+            labelText: context.localizations.password,
             border: const OutlineInputBorder(),
             errorText: ref.watch(
-              LoginViewModel.provider.select((state) => state.passwordError),
+              LoginViewModel.provider
+                  .select((state) => context.getString(state.passwordError).nullIfEmpty()),
             ),
           ),
           onChanged:
@@ -142,7 +145,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             );
           },
         ),
-        const Text('Remember username'),
+        Text(context.localizations.rememberUsername),
       ],
     );
   }

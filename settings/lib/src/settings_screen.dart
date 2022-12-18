@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:settings/src/settings_view_model.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
@@ -8,7 +9,7 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
+      appBar: AppBar(title: Text(context.localizations.settings)),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -19,7 +20,7 @@ class SettingsScreen extends ConsumerWidget {
                     .read(SettingsViewModel.provider.notifier)
                     .onLogoutButtonPressed();
               },
-              child: const Text('Logout'),
+              child: Text(context.localizations.logout),
             ),
           ],
         ),
