@@ -1,5 +1,9 @@
 include: strict_lint.yaml
 
+analyzer:
+  exclude:
+    - '**/app_localizations**.dart'
+
 linter:
   rules:
     # Follow flutter repo https://github.com/flutter/flutter/blob/master/analysis_options.yaml
