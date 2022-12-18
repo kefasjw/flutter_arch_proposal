@@ -1,4 +1,4 @@
-.PHONY: help generate l10n
+.PHONY: help generate l10n check
 
 help: ## Help
 	@IFS=$$'\n' ; \
@@ -17,3 +17,6 @@ generate: ## Generate files using build_runner
 l10n: ## Generate localizations files
 	@(cd core && flutter gen-l10n)
 
+check: ## Format analyze
+	@flutter format .
+	@flutter analyze

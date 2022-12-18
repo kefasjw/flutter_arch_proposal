@@ -84,8 +84,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             labelText: context.localizations.username,
             border: const OutlineInputBorder(),
             errorText: ref.watch(
-              LoginViewModel.provider
-                  .select((state) => context.getString(state.usernameError).nullIfEmpty()),
+              LoginViewModel.provider.select(
+                (state) => context.getString(state.usernameError).nullIfEmpty(),
+              ),
             ),
           ),
           onChanged:
@@ -116,8 +117,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             labelText: context.localizations.password,
             border: const OutlineInputBorder(),
             errorText: ref.watch(
-              LoginViewModel.provider
-                  .select((state) => context.getString(state.passwordError).nullIfEmpty()),
+              LoginViewModel.provider.select(
+                (state) => context.getString(state.passwordError).nullIfEmpty(),
+              ),
             ),
           ),
           onChanged:
