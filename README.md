@@ -10,6 +10,12 @@ architecture guides on the internet have also been updated to follow this archit
 example [1](https://twitter.com/ASalvadorini/status/1597862552180252673)
 and [2](https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction).
 
+## Modularization
+
+Based on [Common modularization patterns](https://developer.android.com/topic/modularization/patterns).
+
+![modularization](docs/images/modularization.png)
+
 ## Libraries
 
 - State Management: [riverpod](https://pub.dev/packages/riverpod)
