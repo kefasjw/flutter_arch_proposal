@@ -1,0 +1,145 @@
+import 'dart:async';
+
+import 'package:auth_core/auth_core.dart';
+import 'package:core/core.dart';
+import 'package:shared_dependency/flutter_riverpod.dart';
+import 'package:shared_dependency/freezed_annotation.dart';
+
+part 'login_view_model.freezed.dart';
+
+class LoginViewModel extends StateNotifier<LoginScreenUiState> {
+  LoginViewModel(
+    this._authRepository,
+    this._commonViewModel,
+  ) : super(const LoginScreenUiState());
+
+  static final provider =
+      StateNotifierProvider.autoDispose<LoginViewModel, LoginScreenUiState>(
+          (ref) {
+    return LoginViewModel(
+      ref.watch(AuthRepository.provider),
+      ref.watch(CommonViewModel.provider.notifier),
+    );
+  });
+
+  final AuthRepository _authRepository;
+
+  final CommonViewModel _commonViewModel;
+
+  StreamSubscription? _isLoggedInSubscription;
+
+  Timer? _usernameDebounce;
+
+  Timer? _passwordDebounce;
+
+  void onScreenLoaded() {
+    _isLoggedInSubscription?.cancel();
+    _isLoggedInSubscription = _authRepository.isLoggedInStream.listen((event) {
+      state = state.copyWith(isLoggedIn: event);
+    });
+    _getSavedUsername();
+  }
+
+  Future<void> _getSavedUsername() async {
+    final username = await _authRepository.getLastUsername();
+    if (!mounted) return;
+    if (username.isNotEmpty) {
+      state = state.copyWith(
+        username: username,
+        shouldSaveUsername: true,
+      );
+      _validateUsername(showError: true);
+      _checkLoginButtonEnabled();
+    }
+  }
+
+  void onUsernameChanged(String username) {
+    state = state.copyWith(username: username);
+    _checkLoginButtonEnabled();
+    _usernameDebounce?.cancel();
+    _usernameDebounce = Timer(
+      const Duration(milliseconds: 300),
+      () {
+        _validateUsername(showError: true);
+      },
+    );
+  }
+
+  bool _validateUsername({required bool showError}) {
+    final String? error;
+    if (state.username.length < 3) {
+      error = 'Min 3 characters';
+    } else {
+      error = null;
+    }
+    if (showError) state = state.copyWith(usernameError: error);
+    return error == null;
+  }
+
+  void onPasswordChanged(String password) {
+    state = state.copyWith(password: password);
+    _checkLoginButtonEnabled();
+    _passwordDebounce?.cancel();
+    _passwordDebounce = Timer(
+      const Duration(milliseconds: 300),
+      () {
+        _validatePassword(showError: true);
+      },
+    );
+  }
+
+  bool _validatePassword({required bool showError}) {
+    final String? error;
+    if (state.password.isEmpty) {
+      error = 'Must not be empty';
+    } else {
+      error = null;
+    }
+    if (showError) state = state.copyWith(passwordError: error);
+    return error == null;
+  }
+
+  bool _checkLoginButtonEnabled() {
+    final isEnabled = _validateUsername(showError: false) &&
+        _validatePassword(showError: false);
+    state = state.copyWith(isLoginButtonEnabled: isEnabled);
+    return isEnabled;
+  }
+
+  void onShouldSaveUsernameToggled() {
+    state = state.copyWith(shouldSaveUsername: !state.shouldSaveUsername);
+  }
+
+  Future<void> onLoginButtonPressed() async {
+    if (!_checkLoginButtonEnabled()) return;
+    _commonViewModel.showLoading(isLoading: true);
+    await _authRepository.login(
+      username: state.username,
+      password: state.password,
+      shouldSaveUsername: state.shouldSaveUsername,
+    );
+    if (!mounted) return;
+    _commonViewModel.showLoading(isLoading: false);
+  }
+
+  @override
+  void dispose() {
+    _isLoggedInSubscription?.cancel();
+    _usernameDebounce?.cancel();
+    _passwordDebounce?.cancel();
+    super.dispose();
+  }
+}
+
+@freezed
+class LoginScreenUiState with _$LoginScreenUiState {
+  const factory LoginScreenUiState({
+    @Default(false) bool isLoggedIn,
+    @Default('') String username,
+    String? usernameError,
+    @Default('') String password,
+    String? passwordError,
+    @Default(false) bool shouldSaveUsername,
+    @Default(false) bool isLoginButtonEnabled,
+  }) = _LoginScreenUiState;
+}

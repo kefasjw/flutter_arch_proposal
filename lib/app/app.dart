@@ -1,7 +1,7 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_arch_proposal/app/navigation/router.dart';
-import 'package:flutter_arch_proposal/feature/common/common_screen.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_dependency/flutter_riverpod.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});

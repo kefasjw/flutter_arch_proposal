@@ -1,0 +1,21 @@
+name: auth
+
+environment:
+  sdk: '>=2.18.5 <3.0.0'
+
+dependencies:
+  auth_core:
+    path: ../auth_core
+  core:
+    path: ../core
+  flutter:
+    sdk: flutter
+  shared_dependency:
+    path: ../shared_dependency
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

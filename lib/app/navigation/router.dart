@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:auth/auth.dart';
+import 'package:auth_core/auth_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_arch_proposal/core/data/repository/auth_repository.dart';
-import 'package:flutter_arch_proposal/feature/auth/login/login_screen.dart';
-import 'package:flutter_arch_proposal/feature/home/home_screen.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_arch_proposal/app/home/home_screen.dart';
+import 'package:shared_dependency/flutter_riverpod.dart';
+import 'package:shared_dependency/go_router.dart';
 
 class AppRouter {
   AppRouter(this._authRepository);
@@ -62,7 +62,9 @@ class AppRouter {
       GoRoute(
         name: loginRoute,
         path: '/$loginRoute',
-        builder: (context, state) => const LoginScreen(),
+        builder: (context, state) {
+          return LoginScreen(nextRoute: context.namedLocation(agentsRoute));
+        },
       ),
     ],
   );
