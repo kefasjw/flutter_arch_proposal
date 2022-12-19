@@ -5,19 +5,19 @@ environment:
 
 dependencies:
   agent:
-    path: agent
+    path: features/agent
   auth:
-    path: auth
-  auth_core:
-    path: auth_core
+    path: features/auth
+  auth_domain:
+    path: domain/auth_domain
   core:
     path: core
   counter:
-    path: counter
+    path: features/counter
   flutter:
     sdk: flutter
   settings:
-    path: settings
+    path: features/settings
   shared_dependency:
     path: shared_dependency
 

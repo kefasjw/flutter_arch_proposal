@@ -1,6 +1,6 @@
 arb-dir: lib/src/localizations
-template-arb-file: app_en.arb
-output-localization-file: app_localizations.dart
+template-arb-file: login_en.arb
+output-localization-file: login_localizations.dart
 output-dir: lib/src/localizations
 synthetic-package: false # required for exporting localizations https://github.com/flutter/flutter/issues/96839
 nullable-getter: false
