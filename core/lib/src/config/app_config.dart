@@ -1,4 +1,4 @@
-import 'package:shared_dependency/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AppConfig {
   const AppConfig({

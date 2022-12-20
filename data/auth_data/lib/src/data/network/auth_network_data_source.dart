@@ -1,6 +1,6 @@
 import 'package:auth_data/src/data/network/login_response.dart';
 import 'package:core/core.dart';
-import 'package:shared_dependency/flutter_riverpod.dart';
+import 'package:core/flutter_riverpod.dart';
 
 class AuthNetworkDataSource {
   AuthNetworkDataSource(this._client);

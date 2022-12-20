@@ -1,5 +1,5 @@
 import 'package:agent_data/src/model/agent.dart';
-import 'package:shared_dependency/flutter_riverpod.dart';
+import 'package:core/flutter_riverpod.dart';
 
 class AgentRepository {
   static final provider = Provider((ref) => AgentRepository());

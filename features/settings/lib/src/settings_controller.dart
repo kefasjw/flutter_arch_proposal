@@ -1,6 +1,6 @@
 import 'package:auth_data/auth_data.dart';
 import 'package:core/core.dart';
-import 'package:shared_dependency/flutter_riverpod.dart';
+import 'package:core/flutter_riverpod.dart';
 
 class SettingsController extends StateNotifier<void> {
   SettingsController(

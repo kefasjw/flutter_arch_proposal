@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:core/src/config/app_config.dart';
 import 'package:core/src/network/exceptions.dart';
 import 'package:core/src/secure_storage/app_secure_storage_data_source.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_dependency/flutter_riverpod.dart';
 
 class HttpClient {
   HttpClient(this._config, this._secureStorageDataSource);

@@ -1,4 +1,4 @@
-import 'package:shared_dependency/freezed_annotation.dart';
+import 'package:core/freezed_annotation.dart';
 
 part 'login_response.freezed.dart';
 part 'login_response.g.dart';

@@ -10,8 +10,6 @@ dependencies:
     path: ../../core
   flutter:
     sdk: flutter
-  shared_dependency:
-    path: ../../shared_dependency
 
 dev_dependencies:
   flutter_test:

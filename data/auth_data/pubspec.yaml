@@ -6,8 +6,6 @@ environment:
 dependencies:
   core:
     path: ../../core
-  shared_dependency:
-    path: ../../shared_dependency
 
 dev_dependencies:
   flutter_test:

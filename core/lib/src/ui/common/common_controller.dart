@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:core/src/localizations/ui_text.dart';
 import 'package:core/src/ui/common/snackbar_message.dart';
-import 'package:shared_dependency/flutter_riverpod.dart';
-import 'package:shared_dependency/freezed_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'common_controller.freezed.dart';
 

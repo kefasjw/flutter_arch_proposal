@@ -2,7 +2,7 @@ import 'package:core/src/localizations/ui_text.dart';
 import 'package:core/src/ui/common/common_controller.dart';
 import 'package:core/src/ui/loading_overlay.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_dependency/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Handle common features like loading overlay, showing dialog,
 /// showing snackbar

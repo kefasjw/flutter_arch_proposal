@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:auth_data/src/data/network/auth_network_data_source.dart';
 import 'package:core/core.dart';
-import 'package:shared_dependency/flutter_riverpod.dart';
+import 'package:core/flutter_riverpod.dart';
 
 class AuthRepository {
   AuthRepository(

@@ -1,5 +1,5 @@
 import 'package:agent_data/agent_data.dart';
-import 'package:shared_dependency/flutter_riverpod.dart';
+import 'package:core/flutter_riverpod.dart';
 
 class AgentListController extends StateNotifier<AgentListScreenUiState> {
   AgentListController(this._agentRepository)

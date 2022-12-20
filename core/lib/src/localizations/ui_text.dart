@@ -1,6 +1,6 @@
 import 'package:core/src/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_dependency/freezed_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ui_text.freezed.dart';
 

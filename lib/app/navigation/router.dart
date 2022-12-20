@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:auth/auth.dart';
 import 'package:auth_data/auth_data.dart';
+import 'package:core/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_arch_proposal/app/top_level/top_level_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shared_dependency/flutter_riverpod.dart';
 
 class AppRouter {
   AppRouter(this._authRepository);

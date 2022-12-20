@@ -68,7 +68,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_riverpod:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_riverpod
       url: "https://pub.dartlang.org"
@@ -127,7 +127,7 @@ packages:
     source: sdk
     version: "0.0.0"
   freezed_annotation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
@@ -245,13 +245,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
-  shared_dependency:
-    dependency: "direct main"
-    description:
-      path: "../shared_dependency"
-      relative: true
-    source: path
-    version: "0.0.0"
   shared_preferences:
     dependency: "direct main"
     description:

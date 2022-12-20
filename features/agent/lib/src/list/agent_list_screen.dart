@@ -1,8 +1,8 @@
 import 'package:agent/src/list/agent_list_controller.dart';
 import 'package:agent_data/agent_data.dart';
 import 'package:core/core.dart';
+import 'package:core/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_dependency/flutter_riverpod.dart';
 
 class AgentListScreen extends ConsumerStatefulWidget {
   const AgentListScreen({super.key});
