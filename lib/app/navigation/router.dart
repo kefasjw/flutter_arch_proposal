@@ -13,7 +13,7 @@ class AppRouter {
   static final provider =
       Provider((ref) => AppRouter(ref.watch(AuthRepository.provider)));
 
-  static final _homePageKey = UniqueKey();
+  static final _topLevelPageKey = UniqueKey();
 
   static const loginRoute = 'login';
   static const agentsRoute = 'agents';
@@ -38,21 +38,21 @@ class AppRouter {
         name: agentsRoute,
         path: '/$agentsRoute',
         pageBuilder: (context, state) {
-          return _topLevel(TopLevelTab.agents);
+          return _topLevelPage(TopLevelTab.agents);
         },
       ),
       GoRoute(
         name: counterRoute,
         path: '/$counterRoute',
         pageBuilder: (context, state) {
-          return _topLevel(TopLevelTab.counter);
+          return _topLevelPage(TopLevelTab.counter);
         },
       ),
       GoRoute(
         name: settingsRoute,
         path: '/$settingsRoute',
         pageBuilder: (context, state) {
-          return _topLevel(TopLevelTab.settings);
+          return _topLevelPage(TopLevelTab.settings);
         },
       ),
       GoRoute(
@@ -65,8 +65,8 @@ class AppRouter {
     ],
   );
 
-  Page<void> _topLevel(TopLevelTab tab) {
-    return MaterialPage(key: _homePageKey, child: TopLevelScreen(tab: tab));
+  Page<void> _topLevelPage(TopLevelTab tab) {
+    return MaterialPage(key: _topLevelPageKey, child: TopLevelScreen(tab: tab));
   }
 }
 
