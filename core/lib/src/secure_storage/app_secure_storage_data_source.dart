@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:core/src/secure_storage/di/secure_storage_module.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
-import 'package:shared_dependency/flutter_secure_storage.dart';
 
 const _tokenKey = 'tk';
 

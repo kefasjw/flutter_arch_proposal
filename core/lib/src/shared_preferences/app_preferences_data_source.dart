@@ -1,6 +1,6 @@
 import 'package:core/src/shared_preferences/di/shared_preferences_module.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
-import 'package:shared_dependency/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 const _usernameKey = 'USERNAME';
 
