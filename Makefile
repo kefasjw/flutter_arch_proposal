@@ -1,4 +1,4 @@
-.PHONY: help generate l10n check
+.PHONY: help generate l10n check pub
 
 help: ## Help
 	@IFS=$$'\n' ; \
@@ -20,3 +20,6 @@ l10n: ## Generate localizations files
 check: ## Format analyze
 	@flutter format .
 	@flutter analyze
+
+pub: ## Run pub get on all modules
+	@chmod +x scripts/pub.sh && scripts/pub.sh
