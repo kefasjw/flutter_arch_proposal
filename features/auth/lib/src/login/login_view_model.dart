@@ -117,10 +117,12 @@ class LoginViewModel extends StateNotifier<LoginScreenUiState> {
   Future<void> onLoginButtonPressed() async {
     if (!_checkLoginButtonEnabled()) return;
     _commonViewModel.showLoading(isLoading: true);
-    await _authRepository.login(
-      username: state.username,
-      password: state.password,
-      shouldSaveUsername: state.shouldSaveUsername,
+    await AsyncValue.guard(
+      () => _authRepository.login(
+        username: state.username,
+        password: state.password,
+        shouldSaveUsername: state.shouldSaveUsername,
+      ),
     );
     if (!mounted) return;
     _commonViewModel.showLoading(isLoading: false);

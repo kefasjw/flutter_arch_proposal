@@ -3,6 +3,10 @@ include: strict_lint.yaml
 analyzer:
   exclude:
     - '**/app_localizations**.dart'
+    - '**.g.dart'
+    - '**.freezed.dart'
+  errors:
+    invalid_annotation_target: ignore # https://github.com/rrousselGit/freezed/issues/488
 
 linter:
   rules:
