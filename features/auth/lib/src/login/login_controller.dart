@@ -5,26 +5,26 @@ import 'package:core/core.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
 import 'package:shared_dependency/freezed_annotation.dart';
 
-part 'login_view_model.freezed.dart';
+part 'login_controller.freezed.dart';
 
-class LoginViewModel extends StateNotifier<LoginScreenUiState> {
-  LoginViewModel(
+class LoginController extends StateNotifier<LoginScreenUiState> {
+  LoginController(
     this._authRepository,
-    this._commonViewModel,
+    this._commonController,
   ) : super(const LoginScreenUiState());
 
   static final provider =
-      StateNotifierProvider.autoDispose<LoginViewModel, LoginScreenUiState>(
+      StateNotifierProvider.autoDispose<LoginController, LoginScreenUiState>(
           (ref) {
-    return LoginViewModel(
+    return LoginController(
       ref.watch(AuthRepository.provider),
-      ref.watch(CommonViewModel.provider.notifier),
+      ref.watch(CommonController.provider.notifier),
     );
   });
 
   final AuthRepository _authRepository;
 
-  final CommonViewModel _commonViewModel;
+  final CommonController _commonController;
 
   StreamSubscription? _isLoggedInSubscription;
 
@@ -116,7 +116,7 @@ class LoginViewModel extends StateNotifier<LoginScreenUiState> {
 
   Future<void> onLoginButtonPressed() async {
     if (!_checkLoginButtonEnabled()) return;
-    _commonViewModel.showLoading(isLoading: true);
+    _commonController.showLoading(isLoading: true);
     final result = await AsyncValue.guard(
       () => _authRepository.login(
         username: state.username,
@@ -125,10 +125,10 @@ class LoginViewModel extends StateNotifier<LoginScreenUiState> {
       ),
     );
     if (result is AsyncError) {
-      _commonViewModel.handleCommonError(result.error);
+      _commonController.handleCommonError(result.error);
     }
     if (!mounted) return;
-    _commonViewModel.showLoading(isLoading: false);
+    _commonController.showLoading(isLoading: false);
   }
 
   @override

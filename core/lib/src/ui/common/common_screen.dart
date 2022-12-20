@@ -1,5 +1,5 @@
 import 'package:core/src/localizations/ui_text.dart';
-import 'package:core/src/ui/common/common_view_model.dart';
+import 'package:core/src/ui/common/common_controller.dart';
 import 'package:core/src/ui/loading_overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
@@ -17,7 +17,7 @@ class CommonScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-      CommonViewModel.provider.select((state) => state.snackBarMessage),
+      CommonController.provider.select((state) => state.snackBarMessage),
       (previous, next) {
         if (next != null) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -28,7 +28,7 @@ class CommonScreen extends ConsumerWidget {
     );
     return LoadingOverlay(
       isLoading: ref.watch(
-        CommonViewModel.provider.select((state) => state.isLoading),
+        CommonController.provider.select((state) => state.isLoading),
       ),
       child: child,
     );

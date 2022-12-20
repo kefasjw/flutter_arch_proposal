@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'common_view_model.dart';
+part of 'common_controller.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$CommonScreenState {
+mixin _$CommonScreenUiState {
   bool get isLoading => throw _privateConstructorUsedError;
   SnackBarMessage? get snackBarMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CommonScreenStateCopyWith<CommonScreenState> get copyWith =>
+  $CommonScreenUiStateCopyWith<CommonScreenUiState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CommonScreenStateCopyWith<$Res> {
-  factory $CommonScreenStateCopyWith(
-          CommonScreenState value, $Res Function(CommonScreenState) then) =
-      _$CommonScreenStateCopyWithImpl<$Res, CommonScreenState>;
+abstract class $CommonScreenUiStateCopyWith<$Res> {
+  factory $CommonScreenUiStateCopyWith(
+          CommonScreenUiState value, $Res Function(CommonScreenUiState) then) =
+      _$CommonScreenUiStateCopyWithImpl<$Res, CommonScreenUiState>;
   @useResult
   $Res call({bool isLoading, SnackBarMessage? snackBarMessage});
 }
 
 /// @nodoc
-class _$CommonScreenStateCopyWithImpl<$Res, $Val extends CommonScreenState>
-    implements $CommonScreenStateCopyWith<$Res> {
-  _$CommonScreenStateCopyWithImpl(this._value, this._then);
+class _$CommonScreenUiStateCopyWithImpl<$Res, $Val extends CommonScreenUiState>
+    implements $CommonScreenUiStateCopyWith<$Res> {
+  _$CommonScreenUiStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,22 +63,22 @@ class _$CommonScreenStateCopyWithImpl<$Res, $Val extends CommonScreenState>
 }
 
 /// @nodoc
-abstract class _$$_CommonScreenStateCopyWith<$Res>
-    implements $CommonScreenStateCopyWith<$Res> {
-  factory _$$_CommonScreenStateCopyWith(_$_CommonScreenState value,
-          $Res Function(_$_CommonScreenState) then) =
-      __$$_CommonScreenStateCopyWithImpl<$Res>;
+abstract class _$$_CommonScreenUiStateCopyWith<$Res>
+    implements $CommonScreenUiStateCopyWith<$Res> {
+  factory _$$_CommonScreenUiStateCopyWith(_$_CommonScreenUiState value,
+          $Res Function(_$_CommonScreenUiState) then) =
+      __$$_CommonScreenUiStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isLoading, SnackBarMessage? snackBarMessage});
 }
 
 /// @nodoc
-class __$$_CommonScreenStateCopyWithImpl<$Res>
-    extends _$CommonScreenStateCopyWithImpl<$Res, _$_CommonScreenState>
-    implements _$$_CommonScreenStateCopyWith<$Res> {
-  __$$_CommonScreenStateCopyWithImpl(
-      _$_CommonScreenState _value, $Res Function(_$_CommonScreenState) _then)
+class __$$_CommonScreenUiStateCopyWithImpl<$Res>
+    extends _$CommonScreenUiStateCopyWithImpl<$Res, _$_CommonScreenUiState>
+    implements _$$_CommonScreenUiStateCopyWith<$Res> {
+  __$$_CommonScreenUiStateCopyWithImpl(_$_CommonScreenUiState _value,
+      $Res Function(_$_CommonScreenUiState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_CommonScreenStateCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? snackBarMessage = freezed,
   }) {
-    return _then(_$_CommonScreenState(
+    return _then(_$_CommonScreenUiState(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_CommonScreenStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CommonScreenState implements _CommonScreenState {
-  const _$_CommonScreenState({this.isLoading = false, this.snackBarMessage});
+class _$_CommonScreenUiState implements _CommonScreenUiState {
+  const _$_CommonScreenUiState({this.isLoading = false, this.snackBarMessage});
 
   @override
   @JsonKey()
@@ -113,14 +113,14 @@ class _$_CommonScreenState implements _CommonScreenState {
 
   @override
   String toString() {
-    return 'CommonScreenState(isLoading: $isLoading, snackBarMessage: $snackBarMessage)';
+    return 'CommonScreenUiState(isLoading: $isLoading, snackBarMessage: $snackBarMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CommonScreenState &&
+            other is _$_CommonScreenUiState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.snackBarMessage, snackBarMessage) ||
@@ -133,15 +133,15 @@ class _$_CommonScreenState implements _CommonScreenState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CommonScreenStateCopyWith<_$_CommonScreenState> get copyWith =>
-      __$$_CommonScreenStateCopyWithImpl<_$_CommonScreenState>(
+  _$$_CommonScreenUiStateCopyWith<_$_CommonScreenUiState> get copyWith =>
+      __$$_CommonScreenUiStateCopyWithImpl<_$_CommonScreenUiState>(
           this, _$identity);
 }
 
-abstract class _CommonScreenState implements CommonScreenState {
-  const factory _CommonScreenState(
+abstract class _CommonScreenUiState implements CommonScreenUiState {
+  const factory _CommonScreenUiState(
       {final bool isLoading,
-      final SnackBarMessage? snackBarMessage}) = _$_CommonScreenState;
+      final SnackBarMessage? snackBarMessage}) = _$_CommonScreenUiState;
 
   @override
   bool get isLoading;
@@ -149,6 +149,6 @@ abstract class _CommonScreenState implements CommonScreenState {
   SnackBarMessage? get snackBarMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_CommonScreenStateCopyWith<_$_CommonScreenState> get copyWith =>
+  _$$_CommonScreenUiStateCopyWith<_$_CommonScreenUiState> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,13 +1,13 @@
 import 'package:agent_data/agent_data.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
 
-class AgentListViewModel extends StateNotifier<AgentListScreenUiState> {
-  AgentListViewModel(this._agentRepository)
+class AgentListController extends StateNotifier<AgentListScreenUiState> {
+  AgentListController(this._agentRepository)
       : super(const AgentListScreenUiState());
 
-  static final provider = StateNotifierProvider.autoDispose<AgentListViewModel,
+  static final provider = StateNotifierProvider.autoDispose<AgentListController,
       AgentListScreenUiState>((ref) {
-    return AgentListViewModel(ref.watch(AgentRepository.provider));
+    return AgentListController(ref.watch(AgentRepository.provider));
   });
 
   final AgentRepository _agentRepository;

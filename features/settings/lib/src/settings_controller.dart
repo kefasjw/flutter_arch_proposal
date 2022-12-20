@@ -2,28 +2,28 @@ import 'package:auth_data/auth_data.dart';
 import 'package:core/core.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
 
-class SettingsViewModel extends StateNotifier<void> {
-  SettingsViewModel(
+class SettingsController extends StateNotifier<void> {
+  SettingsController(
     this._authRepository,
-    this._commonViewModel,
+    this._commonController,
   ) : super(null);
 
   static final provider = StateNotifierProvider.autoDispose(
     (ref) {
-      return SettingsViewModel(
+      return SettingsController(
         ref.watch(AuthRepository.provider),
-        ref.watch(CommonViewModel.provider.notifier),
+        ref.watch(CommonController.provider.notifier),
       );
     },
   );
 
   final AuthRepository _authRepository;
 
-  final CommonViewModel _commonViewModel;
+  final CommonController _commonController;
 
   Future<void> onLogoutButtonPressed() async {
-    _commonViewModel.showLoading(isLoading: true);
+    _commonController.showLoading(isLoading: true);
     await _authRepository.logout();
-    _commonViewModel.showLoading(isLoading: false);
+    _commonController.showLoading(isLoading: false);
   }
 }

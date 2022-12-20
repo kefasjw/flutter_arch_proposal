@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:settings/src/settings_view_model.dart';
+import 'package:settings/src/settings_controller.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
 
 class SettingsScreen extends ConsumerWidget {
@@ -17,7 +17,7 @@ class SettingsScreen extends ConsumerWidget {
             TextButton(
               onPressed: () {
                 ref
-                    .read(SettingsViewModel.provider.notifier)
+                    .read(SettingsController.provider.notifier)
                     .onLogoutButtonPressed();
               },
               child: Text(context.localizations.logout),

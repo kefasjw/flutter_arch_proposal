@@ -1,4 +1,4 @@
-import 'package:agent/src/list/agent_list_view_model.dart';
+import 'package:agent/src/list/agent_list_controller.dart';
 import 'package:agent_data/agent_data.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class _AgentListScreenState extends ConsumerState<AgentListScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(AgentListViewModel.provider.notifier).onScreenLoaded();
+      ref.read(AgentListController.provider.notifier).onScreenLoaded();
     });
   }
 
@@ -27,7 +27,7 @@ class _AgentListScreenState extends ConsumerState<AgentListScreen> {
       body: Consumer(
         builder: (context, ref, child) {
           final agentListUiState = ref.watch(
-            AgentListViewModel.provider
+            AgentListController.provider
                 .select((state) => state.agentListUiState),
           );
           return agentListUiState.when(
@@ -75,7 +75,7 @@ class _AgentListScreenState extends ConsumerState<AgentListScreen> {
     return Center(
       child: ElevatedButton(
         onPressed: () {
-          ref.read(AgentListViewModel.provider.notifier).onAgentListRetried();
+          ref.read(AgentListController.provider.notifier).onAgentListRetried();
         },
         child: Text(context.localizations.retry),
       ),

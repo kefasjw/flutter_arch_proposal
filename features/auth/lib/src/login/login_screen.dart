@@ -1,4 +1,4 @@
-import 'package:auth/src/login/login_view_model.dart';
+import 'package:auth/src/login/login_controller.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
@@ -24,7 +24,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(LoginViewModel.provider.notifier).onScreenLoaded();
+      ref.read(LoginController.provider.notifier).onScreenLoaded();
     });
   }
 
@@ -38,7 +38,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(
-      LoginViewModel.provider.select((state) => state.isLoggedIn),
+      LoginController.provider.select((state) => state.isLoggedIn),
       (previous, next) {
         if (next) widget.onLoggedIn();
       },
@@ -69,7 +69,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     return Consumer(
       builder: (context, ref, child) {
         ref.listen(
-          LoginViewModel.provider.select((state) => state.username),
+          LoginController.provider.select((state) => state.username),
           (previous, next) {
             if (next != _usernameController.text) {
               _usernameController.text = next;
@@ -83,13 +83,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             labelText: context.localizations.username,
             border: const OutlineInputBorder(),
             errorText: ref.watch(
-              LoginViewModel.provider.select(
+              LoginController.provider.select(
                 (state) => context.getString(state.usernameError).nullIfEmpty(),
               ),
             ),
           ),
           onChanged:
-              ref.read(LoginViewModel.provider.notifier).onUsernameChanged,
+              ref.read(LoginController.provider.notifier).onUsernameChanged,
         );
       },
     );
@@ -99,7 +99,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     return Consumer(
       builder: (context, ref, child) {
         ref.listen(
-          LoginViewModel.provider.select((state) => state.password),
+          LoginController.provider.select((state) => state.password),
           (previous, next) {
             if (next != _passwordController.text) {
               _passwordController.text = next;
@@ -110,19 +110,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           controller: _passwordController,
           obscureText: true,
           onSubmitted: (_) {
-            ref.read(LoginViewModel.provider.notifier).onLoginButtonPressed();
+            ref.read(LoginController.provider.notifier).onLoginButtonPressed();
           },
           decoration: InputDecoration(
             labelText: context.localizations.password,
             border: const OutlineInputBorder(),
             errorText: ref.watch(
-              LoginViewModel.provider.select(
+              LoginController.provider.select(
                 (state) => context.getString(state.passwordError).nullIfEmpty(),
               ),
             ),
           ),
           onChanged:
-              ref.read(LoginViewModel.provider.notifier).onPasswordChanged,
+              ref.read(LoginController.provider.notifier).onPasswordChanged,
         );
       },
     );
@@ -135,12 +135,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           builder: (context, ref, child) {
             return Checkbox(
               value: ref.watch(
-                LoginViewModel.provider
+                LoginController.provider
                     .select((state) => state.shouldSaveUsername),
               ),
               onChanged: (_) {
                 ref
-                    .read(LoginViewModel.provider.notifier)
+                    .read(LoginController.provider.notifier)
                     .onShouldSaveUsernameToggled();
               },
             );
@@ -155,13 +155,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     return Consumer(
       builder: (context, ref, child) {
         final isEnabled = ref.watch(
-          LoginViewModel.provider.select((state) => state.isLoginButtonEnabled),
+          LoginController.provider
+              .select((state) => state.isLoginButtonEnabled),
         );
         return ElevatedButton(
           onPressed: isEnabled
               ? () {
                   ref
-                      .read(LoginViewModel.provider.notifier)
+                      .read(LoginController.provider.notifier)
                       .onLoginButtonPressed();
                 }
               : null,

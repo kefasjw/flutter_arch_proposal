@@ -5,15 +5,15 @@ import 'package:core/src/ui/common/snackbar_message.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
 import 'package:shared_dependency/freezed_annotation.dart';
 
-part 'common_view_model.freezed.dart';
+part 'common_controller.freezed.dart';
 
-class CommonViewModel extends StateNotifier<CommonScreenState> {
-  CommonViewModel() : super(const CommonScreenState());
+class CommonController extends StateNotifier<CommonScreenUiState> {
+  CommonController() : super(const CommonScreenUiState());
 
   static final provider =
-      StateNotifierProvider.autoDispose<CommonViewModel, CommonScreenState>(
+      StateNotifierProvider.autoDispose<CommonController, CommonScreenUiState>(
     (ref) {
-      return CommonViewModel();
+      return CommonController();
     },
   );
 
@@ -38,9 +38,9 @@ class CommonViewModel extends StateNotifier<CommonScreenState> {
 }
 
 @freezed
-class CommonScreenState with _$CommonScreenState {
-  const factory CommonScreenState({
+class CommonScreenUiState with _$CommonScreenUiState {
+  const factory CommonScreenUiState({
     @Default(false) bool isLoading,
     SnackBarMessage? snackBarMessage,
-  }) = _CommonScreenState;
+  }) = _CommonScreenUiState;
 }

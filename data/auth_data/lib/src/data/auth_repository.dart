@@ -6,7 +6,7 @@ import 'package:shared_dependency/flutter_riverpod.dart';
 
 class AuthRepository {
   AuthRepository(
-      this._authNetworkDataSource,
+    this._authNetworkDataSource,
     this._appPreferencesDataSource,
     this._appSecureStorageDataSource,
   );
