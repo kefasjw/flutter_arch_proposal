@@ -2,15 +2,14 @@ import 'package:auth/src/login/login_view_model.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
-import 'package:shared_dependency/go_router.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({
     super.key,
-    required this.nextRoute,
+    required this.onLoggedIn,
   });
 
-  final String nextRoute;
+  final VoidCallback onLoggedIn;
 
   @override
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
@@ -41,7 +40,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     ref.listen(
       LoginViewModel.provider.select((state) => state.isLoggedIn),
       (previous, next) {
-        if (next) context.go(widget.nextRoute);
+        if (next) widget.onLoggedIn();
       },
     );
     return Scaffold(

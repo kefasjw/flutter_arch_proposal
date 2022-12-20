@@ -4,8 +4,8 @@ import 'package:auth/auth.dart';
 import 'package:auth_data/auth_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_arch_proposal/app/top_level/top_level_screen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
-import 'package:shared_dependency/go_router.dart';
 
 class AppRouter {
   AppRouter(this._authRepository);
@@ -38,35 +38,47 @@ class AppRouter {
         name: agentsRoute,
         path: '/$agentsRoute',
         pageBuilder: (context, state) {
-          return _topLevelPage(TopLevelTab.agents);
+          return _topLevelPage(context, TopLevelTab.agents);
         },
       ),
       GoRoute(
         name: counterRoute,
         path: '/$counterRoute',
         pageBuilder: (context, state) {
-          return _topLevelPage(TopLevelTab.counter);
+          return _topLevelPage(context, TopLevelTab.counter);
         },
       ),
       GoRoute(
         name: settingsRoute,
         path: '/$settingsRoute',
         pageBuilder: (context, state) {
-          return _topLevelPage(TopLevelTab.settings);
+          return _topLevelPage(context, TopLevelTab.settings);
         },
       ),
       GoRoute(
         name: loginRoute,
         path: '/$loginRoute',
         builder: (context, state) {
-          return LoginScreen(nextRoute: context.namedLocation(agentsRoute));
+          return LoginScreen(
+            onLoggedIn: () {
+              context.goNamed(agentsRoute);
+            },
+          );
         },
       ),
     ],
   );
 
-  Page<void> _topLevelPage(TopLevelTab tab) {
-    return MaterialPage(key: _topLevelPageKey, child: TopLevelScreen(tab: tab));
+  Page<void> _topLevelPage(BuildContext context, TopLevelTab tab) {
+    return MaterialPage(
+      key: _topLevelPageKey,
+      child: TopLevelScreen(
+        tab: tab,
+        onTabChanged: (tab) {
+          context.goNamed(tab.route);
+        },
+      ),
+    );
   }
 }
 

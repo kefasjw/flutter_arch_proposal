@@ -4,7 +4,6 @@ import 'package:counter/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_arch_proposal/app/navigation/router.dart';
 import 'package:settings/settings.dart';
-import 'package:shared_dependency/go_router.dart';
 
 enum TopLevelTab {
   agents(
@@ -45,9 +44,12 @@ class TopLevelScreen extends StatelessWidget {
   const TopLevelScreen({
     super.key,
     required this.tab,
+    required this.onTabChanged,
   });
 
   final TopLevelTab tab;
+
+  final Function(TopLevelTab tab) onTabChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +57,10 @@ class TopLevelScreen extends StatelessWidget {
       body: _TopLevelChildScreen(tab: tab),
       bottomNavigationBar: NavigationBar(
         selectedIndex: TopLevelTab.values.indexWhere((tab) {
-          return GoRouterState.of(context).subloc ==
-              context.namedLocation(tab.route);
+          return tab == this.tab;
         }),
         onDestinationSelected: (value) {
-          context.goNamed(TopLevelTab.values[value].route);
+          onTabChanged(TopLevelTab.values[value]);
         },
         destinations: [
           ...TopLevelTab.values.map((tab) {
