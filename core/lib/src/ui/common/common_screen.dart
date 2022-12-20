@@ -1,4 +1,4 @@
-import 'package:core/core.dart';
+import 'package:core/src/localizations/ui_text.dart';
 import 'package:core/src/ui/common/common_view_model.dart';
 import 'package:core/src/ui/loading_overlay.dart';
 import 'package:flutter/material.dart';

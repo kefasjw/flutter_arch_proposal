@@ -1,4 +1,4 @@
-import 'package:core/core.dart';
+import 'package:core/src/localizations/ui_text.dart';
 import 'package:flutter/material.dart';
 
 class SnackBarMessage {
