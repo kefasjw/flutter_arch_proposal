@@ -35,9 +35,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordMustNotEmpty => 'Password must not be empty';
 
   @override
-  String get pushedCounterInformation =>
-      'You\'ve pushed the button this many times:';
+  String get pushedCounterInformation => 'You\'ve pushed the button this many times:';
 
   @override
   String get retry => 'Retry';
+
+  @override
+  String get timeoutMessage => 'Connection timeout';
+
+  @override
+  String get errorMessage => 'Oops, something bad happened';
 }

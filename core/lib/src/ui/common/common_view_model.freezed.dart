@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CommonScreenState {
   bool get isLoading => throw _privateConstructorUsedError;
+  SnackBarMessage? get snackBarMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CommonScreenStateCopyWith<CommonScreenState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $CommonScreenStateCopyWith<$Res> {
           CommonScreenState value, $Res Function(CommonScreenState) then) =
       _$CommonScreenStateCopyWithImpl<$Res, CommonScreenState>;
   @useResult
-  $Res call({bool isLoading});
+  $Res call({bool isLoading, SnackBarMessage? snackBarMessage});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$CommonScreenStateCopyWithImpl<$Res, $Val extends CommonScreenState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? snackBarMessage = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      snackBarMessage: freezed == snackBarMessage
+          ? _value.snackBarMessage
+          : snackBarMessage // ignore: cast_nullable_to_non_nullable
+              as SnackBarMessage?,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_CommonScreenStateCopyWith<$Res>
       __$$_CommonScreenStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading});
+  $Res call({bool isLoading, SnackBarMessage? snackBarMessage});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$_CommonScreenStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? snackBarMessage = freezed,
   }) {
     return _then(_$_CommonScreenState(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      snackBarMessage: freezed == snackBarMessage
+          ? _value.snackBarMessage
+          : snackBarMessage // ignore: cast_nullable_to_non_nullable
+              as SnackBarMessage?,
     ));
   }
 }
@@ -92,15 +103,17 @@ class __$$_CommonScreenStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CommonScreenState implements _CommonScreenState {
-  const _$_CommonScreenState({this.isLoading = false});
+  const _$_CommonScreenState({this.isLoading = false, this.snackBarMessage});
 
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  final SnackBarMessage? snackBarMessage;
 
   @override
   String toString() {
-    return 'CommonScreenState(isLoading: $isLoading)';
+    return 'CommonScreenState(isLoading: $isLoading, snackBarMessage: $snackBarMessage)';
   }
 
   @override
@@ -109,11 +122,13 @@ class _$_CommonScreenState implements _CommonScreenState {
         (other.runtimeType == runtimeType &&
             other is _$_CommonScreenState &&
             (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+                other.isLoading == isLoading) &&
+            (identical(other.snackBarMessage, snackBarMessage) ||
+                other.snackBarMessage == snackBarMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading);
+  int get hashCode => Object.hash(runtimeType, isLoading, snackBarMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -124,11 +139,14 @@ class _$_CommonScreenState implements _CommonScreenState {
 }
 
 abstract class _CommonScreenState implements CommonScreenState {
-  const factory _CommonScreenState({final bool isLoading}) =
-      _$_CommonScreenState;
+  const factory _CommonScreenState(
+      {final bool isLoading,
+      final SnackBarMessage? snackBarMessage}) = _$_CommonScreenState;
 
   @override
   bool get isLoading;
+  @override
+  SnackBarMessage? get snackBarMessage;
   @override
   @JsonKey(ignore: true)
   _$$_CommonScreenStateCopyWith<_$_CommonScreenState> get copyWith =>

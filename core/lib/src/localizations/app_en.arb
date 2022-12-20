@@ -10,5 +10,7 @@
   "usernameMinCharacters": "Username min 3 characters",
   "passwordMustNotEmpty": "Password must not be empty",
   "pushedCounterInformation": "You've pushed the button this many times:",
-  "retry": "Retry"
+  "retry": "Retry",
+  "timeoutMessage": "Connection timeout",
+  "errorMessage": "Oops, something bad happened"
 }
