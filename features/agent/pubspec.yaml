@@ -4,8 +4,8 @@ environment:
   sdk: '>=2.18.5 <3.0.0'
 
 dependencies:
-  agent_domain:
-    path: ../../domain/agent_domain
+  agent_data:
+    path: ../../data/agent_data
   core:
     path: ../../core
   flutter:

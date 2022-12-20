@@ -1,4 +1,4 @@
-import 'package:agent_domain/src/model/agent.dart';
+import 'package:agent_data/src/model/agent.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
 
 class AgentRepository {

@@ -1,4 +1,4 @@
-import 'package:agent_domain/agent_domain.dart';
+import 'package:agent_data/agent_data.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';
 
 class AgentListViewModel extends StateNotifier<AgentListScreenUiState> {

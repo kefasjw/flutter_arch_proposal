@@ -1,5 +1,5 @@
 import 'package:agent/src/list/agent_list_view_model.dart';
-import 'package:agent_domain/agent_domain.dart';
+import 'package:agent_data/agent_data.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_dependency/flutter_riverpod.dart';

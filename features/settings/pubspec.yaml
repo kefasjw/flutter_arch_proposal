@@ -4,8 +4,8 @@ environment:
   sdk: '>=2.18.5 <3.0.0'
 
 dependencies:
-  auth_domain:
-    path: ../../domain/auth_domain
+  auth_data:
+    path: ../../data/auth_data
   core:
     path: ../../core
   flutter:

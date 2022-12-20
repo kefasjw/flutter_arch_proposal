@@ -15,10 +15,10 @@ packages:
       relative: true
     source: path
     version: "0.0.0"
-  agent_domain:
+  agent_data:
     dependency: transitive
     description:
-      path: "domain/agent_domain"
+      path: "data/agent_data"
       relative: true
     source: path
     version: "0.0.0"
@@ -50,10 +50,10 @@ packages:
       relative: true
     source: path
     version: "0.0.0"
-  auth_domain:
+  auth_data:
     dependency: "direct main"
     description:
-      path: "domain/auth_domain"
+      path: "data/auth_data"
       relative: true
     source: path
     version: "0.0.0"

@@ -8,8 +8,8 @@ dependencies:
     path: features/agent
   auth:
     path: features/auth
-  auth_domain:
-    path: domain/auth_domain
+  auth_data:
+    path: data/auth_data
   core:
     path: core
   counter:
