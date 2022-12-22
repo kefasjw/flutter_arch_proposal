@@ -1,17 +1,16 @@
 allDirs() {
-    # shellcheck disable=SC2207
-    dirs=($(find . -maxdepth 2 -type d))
+    dirs=(`find . -maxdepth 2 -type d`)
     for dir in "${dirs[@]}"; do
-        $1 "$dir"
+        $1 $dir
     done
 }
 
 runGet() {
-    cd "$1" || exit
+    cd $1
     if [ -f "pubspec.yaml" ]; then
         flutter packages get
     fi
-    cd - > /dev/null || exit
+    cd - > /dev/null
 }
 
 allDirs "runGet"
