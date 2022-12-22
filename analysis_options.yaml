@@ -2,7 +2,7 @@ include: strict_lint.yaml
 
 analyzer:
   exclude:
-    - '**/app_localizations**.dart'
+    - '**/app_localizations*.dart'
     - '**.g.dart'
     - '**.freezed.dart'
   errors:

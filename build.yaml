@@ -6,3 +6,6 @@ targets:
       exclude:
         - ".dart_tool/**"
         - "**/.dart_tool/**"
+        - "**.freezed.dart"
+        - "**.g.dart"
+        - "app_localizations*.dart"
