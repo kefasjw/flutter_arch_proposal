@@ -22,4 +22,5 @@ check: ## Format analyze
 	@flutter analyze
 
 pub: ## Run pub get on all modules
-	@chmod +x scripts/pub.sh && scripts/pub.sh
+	@chmod +x scripts/pub.sh
+	@bash ./scripts/pub.sh
