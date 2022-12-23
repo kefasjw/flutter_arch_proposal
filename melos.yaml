@@ -13,12 +13,20 @@ ide:
 
 scripts:
   analyze:
-    exec: flutter analyze
-  check:
-    exec: flutter format . && flutter analyze
-  hello:
-    name: hey
-    description: 'Greet the world'
-    run: echo '$GREETING World'
-
-    
+    run: |
+      flutter format --set-exit-if-changed .
+      flutter analyze
+  generate:
+    run: flutter pub run build_runner build --delete-conflicting-outputs
+  l10n:
+    run: melos exec --file-exists="l10n.yaml" -- "flutter gen-l10n"
+  test:
+    run: melos exec --dir-exists="test" -- "flutter test"
+  test_coverage:
+    run: |
+      melos exec --dir-exists="test" -- "flutter test --coverage"
+      melos combine_coverage
+  combine_coverage:
+    exec: |
+      chmod +x $MELOS_ROOT_PATH/scripts/combine_coverage.sh
+      $MELOS_ROOT_PATH/scripts/combine_coverage.sh
