@@ -1,0 +1,24 @@
+name: flutter_arch_proposal
+
+packages:
+  - .
+  - core
+  - test_core
+  - data/**
+  - features/**
+
+ide:
+  intellij:
+    enabled: false
+
+scripts:
+  analyze:
+    exec: flutter analyze
+  check:
+    exec: flutter format . && flutter analyze
+  hello:
+    name: hey
+    description: 'Greet the world'
+    run: echo '$GREETING World'
+
+    
