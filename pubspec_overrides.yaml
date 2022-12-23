@@ -1,0 +1,12 @@
+# melos_managed_dependency_overrides: agent,auth,core,counter,settings
+dependency_overrides:
+  agent:
+    path: features/agent
+  auth:
+    path: features/auth
+  core:
+    path: core
+  counter:
+    path: features/counter
+  settings:
+    path: features/settings

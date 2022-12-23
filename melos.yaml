@@ -1,0 +1,24 @@
+name: flutter_arch_proposal
+
+packages:
+  - core
+  - features/**
+  - '*'
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
+scripts:
+  pub-get:
+    run: melos exec -- flutter pub get .
+    description: Run pub get in all packages.
+  analyze:
+    run: melos exec -- flutter analyze .
+    description: Run analyze in all packages.
+  dcm-analyze:
+    run: melos exec -- flutter pub run dart_code_metrics:metrics analyze .
+    description: Run dcm analyze in all packages.
+  dcm-analyze-html:
+    run: melos exec -- flutter pub run dart_code_metrics:metrics analyze . --reporter=html
+    description: Run dcm analyze in all packages.

@@ -31,6 +31,7 @@ class AppRouter {
       if (!isLoggedIn && state.subloc != '/$loginRoute') {
         return '/$loginRoute';
       }
+
       return null;
     },
     routes: [
