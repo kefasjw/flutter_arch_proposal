@@ -1,0 +1,11 @@
+name: test_core
+
+environment:
+  sdk: '>=2.18.6 <3.0.0'
+
+dependencies:
+  core:
+    path: ../core
+  flutter:
+    sdk: flutter
+
