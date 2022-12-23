@@ -5,6 +5,7 @@ analyzer:
     - '**/app_localizations*.dart'
     - '**.g.dart'
     - '**.freezed.dart'
+#    - '**/coverage_test.dart'
   errors:
     invalid_annotation_target: ignore # https://github.com/rrousselGit/freezed/issues/488
 

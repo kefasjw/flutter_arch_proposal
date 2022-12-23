@@ -28,6 +28,8 @@ scripts:
   test_coverage:
     run: |
       set -e
+      chmod +x $MELOS_ROOT_PATH/scripts/include_unreached_coverage.sh
+      melos exec -- "$MELOS_ROOT_PATH/scripts/include_unreached_coverage.sh"
       melos exec --dir-exists="test" -- "flutter test --coverage"
       melos combine_coverage
   combine_coverage:
