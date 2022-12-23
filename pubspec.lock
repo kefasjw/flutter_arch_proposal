@@ -16,7 +16,7 @@ packages:
     source: path
     version: "0.0.0"
   agent_data:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       path: "data/agent_data"
       relative: true

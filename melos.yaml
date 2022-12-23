@@ -1,0 +1,38 @@
+name: flutter_arch_proposal
+
+packages:
+  - .
+  - core
+  - test_core
+  - data/**
+  - features/**
+
+ide:
+  intellij:
+    enabled: false
+
+scripts:
+  format:
+    run: flutter format .
+  analyze:
+    run: |
+      set -e
+      flutter format -o none --set-exit-if-changed .
+      flutter analyze
+  generate:
+    run: flutter pub run build_runner build --delete-conflicting-outputs
+  l10n:
+    run: melos exec --file-exists="l10n.yaml" -- "flutter gen-l10n"
+  test:
+    run: melos exec --dir-exists="test" -- "flutter test"
+  test_coverage:
+    run: |
+      set -e
+      chmod +x $MELOS_ROOT_PATH/scripts/include_unreached_coverage.sh
+      melos exec -- "$MELOS_ROOT_PATH/scripts/include_unreached_coverage.sh"
+      melos exec --dir-exists="test" -- "flutter test --coverage"
+      melos combine_coverage
+  combine_coverage:
+    exec: |
+      chmod +x $MELOS_ROOT_PATH/scripts/combine_coverage.sh
+      $MELOS_ROOT_PATH/scripts/combine_coverage.sh

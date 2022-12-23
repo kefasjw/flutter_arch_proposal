@@ -16,15 +16,20 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          
+
       - name: Flutter version
         run: flutter --version
 
-      - name: Install dependencies
-        run: make pub
-
-      - name: Verify formatting
-        run: flutter format --output=none --set-exit-if-changed .
+      - uses: bluefireteam/melos-action@v2
 
       - name: Analyze project source
-        run: flutter analyze
+        run: melos analyze
+
+      - name: Test with coverage
+        run: melos test_coverage
+
+      - name: Report code coverage
+        uses: zgosalvez/github-actions-report-lcov@v2
+        with:
+          coverage-files: combined_coverage/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
