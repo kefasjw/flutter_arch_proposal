@@ -22,9 +22,6 @@ jobs:
 
       - uses: bluefireteam/melos-action@v2
 
-      - name: Install dependencies
-        run: melos bs
-
       - name: Analyze project source
         run: melos analyze
 
