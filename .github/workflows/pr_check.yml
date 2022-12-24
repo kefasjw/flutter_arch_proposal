@@ -34,3 +34,6 @@ jobs:
         with:
           coverage-files: combined_coverage/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: test lcov
+        run: lcov
