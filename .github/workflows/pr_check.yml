@@ -11,29 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          cache: true
-
-      - name: Flutter version
-        run: flutter --version
-
-      - uses: bluefireteam/melos-action@v2
-
-      - name: Analyze project source
-        run: melos analyze
-
-      - name: Test with coverage
-        run: melos test_coverage
-
-      - name: Report code coverage
-        uses: zgosalvez/github-actions-report-lcov@v2
-        with:
-          coverage-files: combined_coverage/lcov.info
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3      
           
-      - name: test lcov
-        run: lcov
+      - name: test open
+        run: open README.md
