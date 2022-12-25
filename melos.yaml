@@ -32,7 +32,13 @@ scripts:
       melos exec -- "$MELOS_ROOT_PATH/scripts/include_unreached_coverage.sh"
       melos exec --dir-exists="test" -- "flutter test --coverage"
       melos combine_coverage
+      if [ "$GITHUB_ACTIONS" != "true" ]; then melos html_coverage ; fi
   combine_coverage:
     exec: |
       chmod +x $MELOS_ROOT_PATH/scripts/combine_coverage.sh
       $MELOS_ROOT_PATH/scripts/combine_coverage.sh
+  html_coverage:
+    run: |
+      set -e
+      genhtml combined_coverage/lcov.info -o combined_coverage/html
+      open combined_coverage/html/index.html
