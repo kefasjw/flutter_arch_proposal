@@ -1,6 +1,8 @@
 include: strict_lint.yaml
 
 analyzer:
+  plugins:
+    - dart_code_metrics
   exclude:
     - '**/app_localizations**.dart'
     - '**.g.dart'
