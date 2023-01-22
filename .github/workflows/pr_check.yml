@@ -12,25 +12,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - uses: subosito/flutter-action@v2
+      
+      - uses: mshick/add-pr-comment@v2
         with:
-          channel: "stable"
-          cache: true
-
-      - name: Flutter version
-        run: flutter --version
-
-      - uses: bluefireteam/melos-action@v2
-
-      - name: Test with coverage
-        run: melos test_coverage
-        
-      - name: Setup LCOV
-        uses: hrishikesh-kadam/setup-lcov@v1
-
-      - name: Report code coverage
-        uses: zgosalvez/github-actions-report-lcov@v3
-        with:
-          coverage-files: combined_coverage/lcov.info
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          message: |
+            **Hello**
+            🌏
+            !
