@@ -1,4 +1,4 @@
-# Flutter architecture proposal
+# Flutter architecture proposala
 
 ## Architecture
 
